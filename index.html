@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>ClassyDate · Create Profile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background: linear-gradient(145deg, #f8f6f4 0%, #f0ece8 100%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+            padding: 16px;
+            position: relative;
+        }
+
+        body::before {
+            content: '❤️';
+            position: fixed;
+            font-size: 18rem;
+            opacity: 0.02;
+            bottom: -80px;
+            right: -80px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes floatHeart {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+        }
+
+        :root {
+            --primary-rose: #D47B7B;
+            --primary-rose-dark: #B86A6A;
+            --primary-burgundy: #8B3A4A;
+            --text-dark: #2C2C2C;
+            --text-light: #6B6B6B;
+            --background-card: #FFFFFF;
+            --border-light: #E8E0E0;
+        }
+
+        .app-container {
+            max-width: 500px;
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 16px;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        .heart-icon {
+            font-size: 1.8rem;
+            animation: floatHeart 3s ease-in-out infinite;
+            display: inline-block;
+        }
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            background: linear-gradient(135deg, #2C2C2C, var(--primary-burgundy), var(--primary-rose));
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-top: 4px;
+        }
+        .logo-sub {
+            font-size: 0.6rem;
+            font-weight: 400;
+            color: var(--primary-rose);
+            letter-spacing: 2px;
+            margin-top: -4px;
+        }
+
+        .trust-banner {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 8px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+        .trust-pill {
+            background: var(--background-card);
+            border: 1px solid var(--border-light);
+            border-radius: 30px;
+            padding: 4px 12px;
+            font-size: 0.6rem;
+            font-weight: 500;
+            color: var(--primary-rose);
+        }
+
+        .profile-card {
+            background: var(--background-card);
+            border-radius: 28px;
+            padding: 20px 18px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+            animation: fadeInUp 0.6s ease-out 0.1s both;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+        .section-sub {
+            font-size: 0.65rem;
+            font-weight: 400;
+            color: var(--text-light);
+            margin-bottom: 16px;
+            border-left: 3px solid var(--primary-rose);
+            padding-left: 10px;
+        }
+
+        .connection-box {
+            border-radius: 24px;
+            padding: 28px 16px;
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .connection-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            z-index: 1;
+        }
+        .connection-bg.active {
+            opacity: 1;
+        }
+        .connection-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.5), rgba(0,0,0,0.65));
+            z-index: 2;
+        }
+        .connection-content {
+            position: relative;
+            z-index: 3;
+            color: white;
+        }
+        .connection-icon {
+            font-size: 1.8rem;
+            margin-bottom: 6px;
+        }
+        .connection-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .connection-text {
+            font-size: 0.7rem;
+            line-height: 1.45;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+        .connection-highlight {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(4px);
+            border-radius: 30px;
+            padding: 5px 14px;
+            display: inline-block;
+            font-size: 0.65rem;
+            margin-top: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 14px;
+        }
+        label {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #4a2a2a;
+            margin-bottom: 5px;
+        }
+        .required:after {
+            content: "*";
+            color: var(--primary-rose);
+            margin-left: 4px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 14px;
+            font-size: 0.9rem;
+            border: 1.5px solid #f0e0e0;
+            border-radius: 14px;
+            background: #fefaf8;
+            color: #2a1a1a;
+            font-family: inherit;
+            transition: all 0.2s ease;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-rose);
+            box-shadow: 0 0 0 3px rgba(212, 123, 123, 0.1);
+            background: white;
+        }
+
+        .row-2cols {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 60px;
+        }
+
+        .whatsapp-hint {
+            font-size: 0.55rem;
+            color: #b09090;
+            margin-top: 4px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .photo-section {
+            margin-top: 16px;
+            margin-bottom: 16px;
+            padding-top: 12px;
+            border-top: 1px solid #f0e0e0;
+        }
+        .photo-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #4a2a2a;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .photo-count {
+            font-size: 0.6rem;
+            color: var(--primary-rose);
+            background: rgba(212, 123, 123, 0.1);
+            padding: 2px 8px;
+            border-radius: 20px;
+        }
+        
+        .photo-upload-grid {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+        .photo-upload-box {
+            flex: 1;
+            aspect-ratio: 1 / 1;
+            background: #fefaf8;
+            border: 2px dashed #e0c8c8;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+        .photo-upload-box.has-photo {
+            border: 2px solid var(--primary-rose);
+        }
+        .photo-upload-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .upload-icon-small {
+            font-size: 1.3rem;
+            color: var(--primary-rose);
+            margin-bottom: 4px;
+        }
+        .upload-text-small {
+            font-size: 0.55rem;
+            color: #b09090;
+            text-align: center;
+        }
+        .remove-photo {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: rgba(0,0,0,0.6);
+            border-radius: 20px;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            color: white;
+            cursor: pointer;
+            z-index: 2;
+        }
+        
+        .main-photo-preview {
+            background: #fefaf8;
+            border-radius: 16px;
+            padding: 12px;
+            margin-bottom: 12px;
+            border: 1px solid #f0e0e0;
+        }
+        .preview-title {
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: var(--primary-burgundy);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .main-photo-display {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .main-photo-thumb {
+            width: 70px;
+            height: 70px;
+            border-radius: 16px;
+            background: #f0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .main-photo-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .main-photo-placeholder {
+            font-size: 1.8rem;
+            opacity: 0.5;
+        }
+        .main-photo-info {
+            flex: 1;
+        }
+        .main-photo-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--primary-burgundy);
+        }
+        .main-photo-hint {
+            font-size: 0.6rem;
+            color: #b09090;
+            margin-top: 2px;
+        }
+        
+        .view-photos-btn {
+            width: 100%;
+            background: rgba(212, 123, 123, 0.1);
+            border: 1px solid var(--border-light);
+            padding: 10px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--primary-rose);
+            border-radius: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+            margin-top: 8px;
+        }
+        .view-photos-btn:hover {
+            background: rgba(212, 123, 123, 0.2);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .modal.active {
+            display: flex;
+        }
+        .modal-content {
+            max-width: 90%;
+            max-height: 80%;
+        }
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            object-fit: contain;
+        }
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: rgba(0,0,0,0.5);
+            width: 40px;
+            height: 40px;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-nav {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .modal-nav button {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .photo-hint {
+            font-size: 0.55rem;
+            color: #b09090;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .next-steps-box {
+            background: #FEFAF8;
+            border-radius: 20px;
+            padding: 16px;
+            margin-top: 20px;
+            margin-bottom: 8px;
+            border: 1px solid #f0e0e0;
+        }
+        .next-steps-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--primary-burgundy);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .next-steps-list {
+            list-style: none;
+            padding: 0;
+        }
+        .next-steps-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-size: 0.7rem;
+            color: var(--text-light);
+        }
+        .step-number {
+            width: 22px;
+            height: 22px;
+            background: var(--primary-rose);
+            color: white;
+            border-radius: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .continue-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-rose), var(--primary-burgundy));
+            border: none;
+            padding: 14px 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: white;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            margin-top: 16px;
+        }
+        .continue-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .error-message {
+            background: rgba(244, 63, 94, 0.08);
+            color: #D96C6C;
+            padding: 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            margin-top: 12px;
+            text-align: center;
+            display: none;
+        }
+
+        .footer-trust {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 16px;
+            padding-top: 12px;
+            border-top: 1px solid #f0e0e0;
+            flex-wrap: wrap;
+        }
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.55rem;
+            color: #a07a7a;
+        }
+
+        /* ========== FACEBOOK BUTTON STYLES - SMALL VERSION ========== */
+        .social-footer {
+            display: flex;
+            justify-content: center;
+            margin-top: 16px;
+            padding: 12px 0 8px;
+            border-top: 1px solid #f0e0e0;
+        }
+        .facebook-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .facebook-icon-container {
+            background: #1877F2;
+            border-radius: 50%;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .facebook-icon-container:hover {
+            transform: scale(1.08);
+            box-shadow: 0 4px 12px rgba(24, 119, 242, 0.4);
+            background: #1b7ef5;
+        }
+        .facebook-icon-container:active {
+            transform: scale(0.96);
+        }
+        .img-small {
+            width: 40px;
+            height: auto;
+            display: block;
+            transition: all 0.3s ease;
+        }
+        /* Mobile responsive - even smaller */
+        @media (max-width: 480px) {
+            .facebook-icon-container {
+                padding: 6px;
+            }
+            .img-small {
+                width: 32px;
+            }
+        }
+        @media (max-width: 380px) {
+            .facebook-icon-container {
+                padding: 4px;
+            }
+            .img-small {
+                width: 28px;
+            }
+        }
+        .social-text {
+            font-size: 0.55rem;
+            color: #a07a7a;
+            margin-top: 6px;
+            text-align: center;
+        }
+
+        @media (max-width: 450px) {
+            body {
+                padding: 12px;
+            }
+            .profile-card {
+                padding: 16px 14px;
+            }
+            .logo-text {
+                font-size: 1.5rem;
+            }
+            .connection-box {
+                padding: 20px 12px;
+                min-height: 180px;
+            }
+            .photo-upload-grid {
+                gap: 8px;
+            }
+            .main-photo-display {
+                gap: 10px;
+            }
+            .main-photo-thumb {
+                width: 55px;
+                height: 55px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="app-container">
+    <div class="hero">
+        <div class="heart-icon">❤️</div>
+        <div class="logo-text">ClassyDate</div>
+        <div class="logo-sub">Elegant Connections</div>
+    </div>
+
+    <div class="trust-banner">
+        <div class="trust-pill">Verified Profiles</div>
+        <div class="trust-pill">Private & Secure</div>
+        <div class="trust-pill">Zimbabwe</div>
+    </div>
+
+    <div class="profile-card">
+        <div class="section-title">Create Profile</div>
+        <div class="section-sub">Tell us about yourself</div>
+
+        <!-- Connection Box -->
+        <div class="connection-box" id="connectionBox">
+            <div class="connection-bg active" style="background-image: url('https://images.pexels.com/photos/16040523/pexels-photo-16040523.jpeg?w=800&h=500&fit=crop');"></div>
+            <div class="connection-bg" style="background-image: url('https://images.pexels.com/photos/9451350/pexels-photo-9451350.jpeg?w=800&h=500&fit=crop');"></div>
+            <div class="connection-bg" style="background-image: url('https://images.pexels.com/photos/1483024/pexels-photo-1483024.jpeg?w=800&h=500&fit=crop');"></div>
+            <div class="connection-overlay"></div>
+            <div class="connection-content">
+                <div class="connection-icon">💕</div>
+                <div class="connection-title">You'll be connected to your match</div>
+                <div class="connection-text">After verification, you'll be matched with quality gentlemen who share your interests and values.</div>
+                <div class="connection-highlight">Thousands of successful matches</div>
+            </div>
+        </div>
+
+        <form id="profileForm" onsubmit="return false;">
+            <div class="form-group">
+                <label class="required">Full name</label>
+                <input type="text" id="fullName" placeholder="Sarah Moyo" required>
+            </div>
+
+            <div class="row-2cols">
+                <div class="form-group">
+                    <label class="required">Age</label>
+                    <input type="number" id="age" placeholder="28" min="18" max="70" required>
+                </div>
+                <div class="form-group">
+                    <label class="required">Location</label>
+                    <select id="location" required>
+                        <option value="">Select</option>
+                        <option>Harare</option>
+                        <option>Bulawayo</option>
+                        <option>Mutare</option>
+                        <option>Gweru</option>
+                        <option>Kwekwe</option>
+                        <option>Masvingo</option>
+                        <option>Marondera</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="required">Email</label>
+                <input type="email" id="email" placeholder="sarah@example.com" required>
+            </div>
+
+            <div class="form-group">
+                <label class="required">WhatsApp Number</label>
+                <input type="tel" id="whatsapp" placeholder="+263 77 123 4567" required>
+                <div class="whatsapp-hint">
+                    <span>📱</span> Enter your active WhatsApp number (must start with +263)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>About me</label>
+                <textarea id="bio" placeholder="Tell potential matches about yourself..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="required">Looking for</label>
+                <select id="lookingFor" required>
+                    <option value="">Select</option>
+                    <option>Friendship</option>
+                    <option>Casual Dating</option>
+                    <option>Serious Relationship</option>
+                    <option>Marriage</option>
+                    <option>Long-term Partnership</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Interests</label>
+                <input type="text" id="interests" placeholder="Travel, Music, Fitness">
+            </div>
+
+            <!-- PHOTO SECTION -->
+            <div class="photo-section">
+                <div class="photo-label">
+                    <span>📸 Profile Photos</span>
+                    <span class="photo-count" id="photoCount">0/3 photos</span>
+                </div>
+                
+                <div class="photo-upload-grid">
+                    <div class="photo-upload-box" data-index="0" onclick="triggerUpload(0)">
+                        <div class="upload-icon-small">📷</div>
+                        <div class="upload-text-small">Add</div>
+                    </div>
+                    <div class="photo-upload-box" data-index="1" onclick="triggerUpload(1)">
+                        <div class="upload-icon-small">📷</div>
+                        <div class="upload-text-small">Add</div>
+                    </div>
+                    <div class="photo-upload-box" data-index="2" onclick="triggerUpload(2)">
+                        <div class="upload-icon-small">📷</div>
+                        <div class="upload-text-small">Add</div>
+                    </div>
+                </div>
+                
+                <div class="main-photo-preview" id="mainPhotoPreview">
+                    <div class="preview-title">
+                        <span>⭐</span> Main Profile Photo
+                    </div>
+                    <div class="main-photo-display">
+                        <div class="main-photo-thumb" id="mainPhotoThumb">
+                            <div class="main-photo-placeholder">👤</div>
+                        </div>
+                        <div class="main-photo-info">
+                            <div class="main-photo-label">No photo selected yet</div>
+                            <div class="main-photo-hint">Upload at least one photo to continue</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="button" class="view-photos-btn" id="viewPhotosBtn" style="display: none;">
+                    <span>👁️</span> View My Photos (<span id="viewPhotoCount">0</span>)
+                </button>
+                
+                <input type="file" id="photoInput" class="photo-input" accept="image/jpeg, image/png, image/jpg" multiple>
+            </div>
+
+            <!-- Next Steps Box -->
+            <div class="next-steps-box">
+                <div class="next-steps-title">
+                    <span>📋</span> Next Steps
+                </div>
+                <ul class="next-steps-list">
+                    <li><span class="step-number">1</span> Fill in your details above</li>
+                    <li><span class="step-number">2</span> Upload at least one profile photo</li>
+                    <li><span class="step-number">3</span> Verify your identity and registration</li>
+                    <li><span class="step-number">4</span> Confirm using one-time password (OTP)</li>
+                    <li><span class="step-number">5</span> Complete registration</li>
+                </ul>
+            </div>
+
+            <button type="button" class="continue-btn" id="continueBtn" disabled>Continue →</button>
+            <div class="error-message" id="errorMessage"></div>
+        </form>
+
+        <!-- Trust Badges -->
+        <div class="footer-trust">
+            <div class="trust-badge">🔒 Encrypted</div>
+            <div class="trust-badge">✓ Verified</div>
+            <div class="trust-badge">💕 Real Connections</div>
+        </div>
+
+        <!-- ========== FACEBOOK BUTTON - WITH YOUR LINK ========== -->
+        <div class="social-footer">
+            <a href="https://www.facebook.com/share/14dA3s8npQ6/" class="facebook-link" target="_blank" rel="noopener noreferrer">
+                <div class="facebook-icon-container">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" 
+                         alt="Visit our Facebook page - ClassyDate on Facebook" 
+                         class="img-small"
+                         width="40"
+                         height="40">
+                </div>
+            </a>
+        </div>
+        <div class="social-text">Follow us on Facebook</div>
+    </div>
+</div>
+
+<!-- Modal for Viewing Photos -->
+<div class="modal" id="photoModal">
+    <div class="modal-close" onclick="closeModal()">✕</div>
+    <div class="modal-content">
+        <img id="modalImage" src="" alt="Profile photo">
+    </div>
+    <div class="modal-nav">
+        <button onclick="prevPhoto()">◀ Previous</button>
+        <button onclick="nextPhoto()">Next ▶</button>
+    </div>
+</div>
+
+<script>
+    // Background image slideshow
+    let currentBgIndex = 0;
+    const bgImages = document.querySelectorAll('.connection-bg');
+    let bgInterval;
+
+    function startBackgroundSlideshow() {
+        if (bgImages.length > 1) {
+            bgInterval = setInterval(() => {
+                bgImages[currentBgIndex].classList.remove('active');
+                currentBgIndex = (currentBgIndex + 1) % bgImages.length;
+                bgImages[currentBgIndex].classList.add('active');
+            }, 5000);
+        }
+    }
+    startBackgroundSlideshow();
+
+    // Photo gallery handling
+    let uploadedPhotos = ['', '', ''];
+    let currentModalIndex = 0;
+    const photoBoxes = document.querySelectorAll('.photo-upload-box');
+    const photoInput = document.getElementById('photoInput');
+    const photoCountSpan = document.getElementById('photoCount');
+    const viewPhotosBtn = document.getElementById('viewPhotosBtn');
+    const viewPhotoCountSpan = document.getElementById('viewPhotoCount');
+    const mainPhotoThumb = document.getElementById('mainPhotoThumb');
+    const continueBtn = document.getElementById('continueBtn');
+    let currentUploadIndex = 0;
+
+    function updatePhotoUI() {
+        const uploadedCount = uploadedPhotos.filter(p => p !== '').length;
+        photoCountSpan.innerText = `${uploadedCount}/3 photos`;
+        
+        if (uploadedCount > 0) {
+            viewPhotosBtn.style.display = 'flex';
+            viewPhotoCountSpan.innerText = uploadedCount;
+        } else {
+            viewPhotosBtn.style.display = 'none';
+        }
+        
+        const mainPhoto = uploadedPhotos.find(p => p !== '');
+        if (mainPhoto) {
+            mainPhotoThumb.innerHTML = `<img src="${mainPhoto}" alt="Main profile photo">`;
+        } else {
+            mainPhotoThumb.innerHTML = `<div class="main-photo-placeholder">👤</div>`;
+        }
+        
+        checkFormFields();
+    }
+    
+    function checkFormFields() {
+        const fullName = document.getElementById('fullName').value.trim();
+        const age = document.getElementById('age').value;
+        const location = document.getElementById('location').value;
+        const email = document.getElementById('email').value.trim();
+        const whatsapp = document.getElementById('whatsapp').value.trim();
+        const lookingFor = document.getElementById('lookingFor').value;
+        const hasPhoto = uploadedPhotos.some(p => p !== '');
+        
+        if (fullName && age && location && email && whatsapp && lookingFor && hasPhoto) {
+            continueBtn.disabled = false;
+        } else {
+            continueBtn.disabled = true;
+        }
+    }
+
+    function triggerUpload(index) {
+        currentUploadIndex = index;
+        photoInput.click();
+    }
+
+    function updatePhotoBox(index, imageUrl) {
+        const box = photoBoxes[index];
+        if (imageUrl) {
+            box.innerHTML = `<img src="${imageUrl}" alt="Photo ${index + 1}"><div class="remove-photo" onclick="event.stopPropagation(); removePhoto(${index})">✕</div>`;
+            box.classList.add('has-photo');
+        } else {
+            box.innerHTML = `<div class="upload-icon-small">📷</div><div class="upload-text-small">Add</div>`;
+            box.classList.remove('has-photo');
+        }
+        updatePhotoUI();
+    }
+
+    function removePhoto(index) {
+        uploadedPhotos[index] = '';
+        updatePhotoBox(index, null);
+    }
+
+    photoInput.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file && currentUploadIndex < 3) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                uploadedPhotos[currentUploadIndex] = event.target.result;
+                updatePhotoBox(currentUploadIndex, event.target.result);
+            };
+            reader.readAsDataURL(file);
+        }
+        photoInput.value = '';
+    });
+
+    // Modal functions
+    function openModal(index) {
+        currentModalIndex = index;
+        const validPhotos = uploadedPhotos.filter(p => p !== '');
+        if (validPhotos.length > 0 && currentModalIndex < validPhotos.length) {
+            document.getElementById('modalImage').src = validPhotos[currentModalIndex];
+            document.getElementById('photoModal').classList.add('active');
+        }
+    }
+    
+    function closeModal() {
+        document.getElementById('photoModal').classList.remove('active');
+    }
+    
+    function prevPhoto() {
+        const validPhotos = uploadedPhotos.filter(p => p !== '');
+        if (currentModalIndex > 0) {
+            currentModalIndex--;
+            document.getElementById('modalImage').src = validPhotos[currentModalIndex];
+        }
+    }
+    
+    function nextPhoto() {
+        const validPhotos = uploadedPhotos.filter(p => p !== '');
+        if (currentModalIndex < validPhotos.length - 1) {
+            currentModalIndex++;
+            document.getElementById('modalImage').src = validPhotos[currentModalIndex];
+        }
+    }
+    
+    viewPhotosBtn.onclick = () => {
+        const validPhotos = uploadedPhotos.filter(p => p !== '');
+        if (validPhotos.length > 0) {
+            currentModalIndex = 0;
+            document.getElementById('modalImage').src = validPhotos[0];
+            document.getElementById('photoModal').classList.add('active');
+        }
+    };
+
+    // Form field listeners
+    document.getElementById('fullName').addEventListener('input', checkFormFields);
+    document.getElementById('age').addEventListener('input', checkFormFields);
+    document.getElementById('location').addEventListener('change', checkFormFields);
+    document.getElementById('email').addEventListener('input', checkFormFields);
+    document.getElementById('whatsapp').addEventListener('input', checkFormFields);
+    document.getElementById('lookingFor').addEventListener('change', checkFormFields);
+
+    // Continue button click handler
+    continueBtn.onclick = function() {
+        const fullName = document.getElementById('fullName').value.trim();
+        const age = document.getElementById('age').value;
+        const location = document.getElementById('location').value;
+        const email = document.getElementById('email').value.trim();
+        const whatsapp = document.getElementById('whatsapp').value.trim();
+        const bio = document.getElementById('bio').value.trim();
+        const lookingFor = document.getElementById('lookingFor').value;
+        const interests = document.getElementById('interests').value.trim();
+        const errorMsgDiv = document.getElementById('errorMessage');
+        
+        const hasPhotos = uploadedPhotos.some(photo => photo !== '');
+        
+        if (!fullName || !age || !location || !email || !whatsapp || !lookingFor) {
+            errorMsgDiv.textContent = 'Please fill all required fields';
+            errorMsgDiv.style.display = 'block';
+            setTimeout(() => errorMsgDiv.style.display = 'none', 3000);
+            return;
+        }
+        
+        if (!hasPhotos) {
+            errorMsgDiv.textContent = 'Please upload at least one profile photo';
+            errorMsgDiv.style.display = 'block';
+            setTimeout(() => errorMsgDiv.style.display = 'none', 3000);
+            return;
+        }
+        
+        if (parseInt(age) < 18 || parseInt(age) > 70) {
+            errorMsgDiv.textContent = 'Age must be between 18 and 70';
+            errorMsgDiv.style.display = 'block';
+            setTimeout(() => errorMsgDiv.style.display = 'none', 3000);
+            return;
+        }
+        
+        errorMsgDiv.style.display = 'none';
+        
+        const params = new URLSearchParams();
+        params.set('name', fullName);
+        params.set('age', age);
+        params.set('location', location);
+        params.set('email', email);
+        params.set('whatsapp', whatsapp);
+        params.set('bio', bio || 'Not provided');
+        params.set('lookingFor', lookingFor);
+        params.set('interests', interests || 'Not provided');
+        params.set('hasPhotos', hasPhotos ? 'Yes' : 'No');
+        
+        if (hasPhotos) {
+            sessionStorage.setItem('classydate_photos', JSON.stringify(uploadedPhotos.filter(p => p !== '')));
+        }
+        
+        window.location.href = `verify-identity.html?${params.toString()}`;
+    };
+</script>
+</body>
+</html>
