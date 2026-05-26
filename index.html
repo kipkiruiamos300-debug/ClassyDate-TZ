@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sw">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>ClassyDate · Create Profile</title>
+    <title>ClassyDate Tanzania · Unda Profaili</title>
     <style>
         * {
             margin: 0;
@@ -597,7 +597,6 @@
             display: block;
             transition: all 0.3s ease;
         }
-        /* Mobile responsive - even smaller */
         @media (max-width: 480px) {
             .facebook-icon-container {
                 padding: 6px;
@@ -653,18 +652,18 @@
     <div class="hero">
         <div class="heart-icon">❤️</div>
         <div class="logo-text">ClassyDate</div>
-        <div class="logo-sub">Elegant Connections</div>
+        <div class="logo-sub">Unda Profaili Yako</div>
     </div>
 
     <div class="trust-banner">
-        <div class="trust-pill">Verified Profiles</div>
-        <div class="trust-pill">Private & Secure</div>
-        <div class="trust-pill">Zimbabwe</div>
+        <div class="trust-pill">Profaili Zilizothibitishwa</div>
+        <div class="trust-pill">Faragha na Usalama</div>
+        <div class="trust-pill">Tanzania</div>
     </div>
 
     <div class="profile-card">
-        <div class="section-title">Create Profile</div>
-        <div class="section-sub">Tell us about yourself</div>
+        <div class="section-title">Unda Profaili</div>
+        <div class="section-sub">Tujulishe kukuhusu</div>
 
         <!-- Connection Box -->
         <div class="connection-box" id="connectionBox">
@@ -674,112 +673,138 @@
             <div class="connection-overlay"></div>
             <div class="connection-content">
                 <div class="connection-icon">💕</div>
-                <div class="connection-title">You'll be connected to your match</div>
-                <div class="connection-text">After verification, you'll be matched with quality gentlemen who share your interests and values.</div>
-                <div class="connection-highlight">Thousands of successful matches</div>
+                <div class="connection-title">Utaunganishwa na mwenzi wako</div>
+                <div class="connection-text">Baada ya uthibitishaji, utaleta pamoja na watu wazuri wanaoshiriki maoni na maadili yako.</div>
+                <div class="connection-highlight">Maelfu ya watu wamefanikiwa</div>
             </div>
         </div>
 
         <form id="profileForm" onsubmit="return false;">
             <div class="form-group">
-                <label class="required">Full name</label>
+                <label class="required">Jina kamili</label>
                 <input type="text" id="fullName" placeholder="Sarah Moyo" required>
             </div>
 
             <div class="row-2cols">
                 <div class="form-group">
-                    <label class="required">Age</label>
+                    <label class="required">Umri</label>
                     <input type="number" id="age" placeholder="28" min="18" max="70" required>
                 </div>
                 <div class="form-group">
-                    <label class="required">Location</label>
+                    <label class="required">Mahali</label>
                     <select id="location" required>
-                        <option value="">Select</option>
-                        <option>Harare</option>
-                        <option>Bulawayo</option>
-                        <option>Mutare</option>
-                        <option>Gweru</option>
-                        <option>Kwekwe</option>
-                        <option>Masvingo</option>
-                        <option>Marondera</option>
+                        <option value="">Chagua mkoa/jiji</option>
+                        <option>Arusha</option>
+                        <option>Bukoba</option>
+                        <option>Dar es Salaam</option>
+                        <option>Dodoma</option>
+                        <option>Geita</option>
+                        <option>Iringa</option>
+                        <option>Kagera</option>
+                        <option>Kigoma</option>
+                        <option>Kilimanjaro</option>
+                        <option>Lindi</option>
+                        <option>Manyara</option>
+                        <option>Mbeya</option>
+                        <option>Morogoro</option>
+                        <option>Moshi</option>
+                        <option>Mtwara</option>
+                        <option>Mwanza</option>
+                        <option>Njombe</option>
+                        <option>Pemba</option>
+                        <option>Pwani</option>
+                        <option>Rukwa</option>
+                        <option>Ruvuma</option>
+                        <option>Shinyanga</option>
+                        <option>Simiyu</option>
+                        <option>Singida</option>
+                        <option>Songea</option>
+                        <option>Songwe</option>
+                        <option>Sumbawanga</option>
+                        <option>Tabora</option>
+                        <option>Tanga</option>
+                        <option>Tabora</option>
+                        <option>Tanga</option>
+                        <option>Unguja (Zanzibar)</option>
+                        <option>Zanzibar</option>
                     </select>
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="required">Email</label>
+                <label class="required">Barua pepe</label>
                 <input type="email" id="email" placeholder="sarah@example.com" required>
             </div>
 
             <div class="form-group">
-                <label class="required">WhatsApp Number</label>
-                <input type="tel" id="whatsapp" placeholder="+263 77 123 4567" required>
+                <label class="required">Nambari ya WhatsApp</label>
+                <input type="tel" id="whatsapp" placeholder="+255 7XX XXX XXX" required>
                 <div class="whatsapp-hint">
-                    <span>📱</span> Enter your active WhatsApp number (must start with +263)
+                    <span>📱</span> Weka nambari yako ya WhatsApp (lazima iwe +255)
                 </div>
             </div>
 
             <div class="form-group">
-                <label>About me</label>
-                <textarea id="bio" placeholder="Tell potential matches about yourself..."></textarea>
+                <label>Kujieleza</label>
+                <textarea id="bio" placeholder="Tuambie kukuhusu..."></textarea>
             </div>
 
             <div class="form-group">
-                <label class="required">Looking for</label>
+                <label class="required">Nataka</label>
                 <select id="lookingFor" required>
-                    <option value="">Select</option>
-                    <option>Friendship</option>
-                    <option>Casual Dating</option>
-                    <option>Serious Relationship</option>
-                    <option>Marriage</option>
-                    <option>Long-term Partnership</option>
+                    <option value="">Chagua</option>
+                    <option>Urafiki</option>
+                    <option>Uchumba wa kawaida</option>
+                    <option>Uhusiano mzito</option>
+                    <option>Ndoa</option>
+                    <option>Ushirikiano wa muda mrefu</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label>Interests</label>
-                <input type="text" id="interests" placeholder="Travel, Music, Fitness">
+                <label>Mambo unayopenda</label>
+                <input type="text" id="interests" placeholder="Safari, Muziki, Michezo">
             </div>
 
             <!-- PHOTO SECTION -->
             <div class="photo-section">
                 <div class="photo-label">
-                    <span>📸 Profile Photos</span>
-                    <span class="photo-count" id="photoCount">0/3 photos</span>
+                    <span>📸 Picha za Profaili</span>
+                    <span class="photo-count" id="photoCount">0/3 picha</span>
                 </div>
                 
                 <div class="photo-upload-grid">
                     <div class="photo-upload-box" data-index="0" onclick="triggerUpload(0)">
                         <div class="upload-icon-small">📷</div>
-                        <div class="upload-text-small">Add</div>
+                        <div class="upload-text-small">Ongeza</div>
                     </div>
                     <div class="photo-upload-box" data-index="1" onclick="triggerUpload(1)">
                         <div class="upload-icon-small">📷</div>
-                        <div class="upload-text-small">Add</div>
+                        <div class="upload-text-small">Ongeza</div>
                     </div>
                     <div class="photo-upload-box" data-index="2" onclick="triggerUpload(2)">
                         <div class="upload-icon-small">📷</div>
-                        <div class="upload-text-small">Add</div>
+                        <div class="upload-text-small">Ongeza</div>
                     </div>
                 </div>
                 
                 <div class="main-photo-preview" id="mainPhotoPreview">
                     <div class="preview-title">
-                        <span>⭐</span> Main Profile Photo
+                        <span>⭐</span> Picha Kuu ya Profaili
                     </div>
                     <div class="main-photo-display">
                         <div class="main-photo-thumb" id="mainPhotoThumb">
                             <div class="main-photo-placeholder">👤</div>
                         </div>
                         <div class="main-photo-info">
-                            <div class="main-photo-label">No photo selected yet</div>
-                            <div class="main-photo-hint">Upload at least one photo to continue</div>
+                            <div class="main-photo-label">Hakuna picha iliyochaguliwa bado</div>
+                            <div class="main-photo-hint">Pakia angalau picha moja kuendelea</div>
                         </div>
                     </div>
                 </div>
                 
                 <button type="button" class="view-photos-btn" id="viewPhotosBtn" style="display: none;">
-                    <span>👁️</span> View My Photos (<span id="viewPhotoCount">0</span>)
+                    <span>👁️</span> Angalia Picha Zangu (<span id="viewPhotoCount">0</span>)
                 </button>
                 
                 <input type="file" id="photoInput" class="photo-input" accept="image/jpeg, image/png, image/jpg" multiple>
@@ -788,41 +813,41 @@
             <!-- Next Steps Box -->
             <div class="next-steps-box">
                 <div class="next-steps-title">
-                    <span>📋</span> Next Steps
+                    <span>📋</span> Hatua Zinazofuata
                 </div>
                 <ul class="next-steps-list">
-                    <li><span class="step-number">1</span> Fill in your details above</li>
-                    <li><span class="step-number">2</span> Upload at least one profile photo</li>
-                    <li><span class="step-number">3</span> Verify your identity and registration</li>
-                    <li><span class="step-number">4</span> Confirm using one-time password (OTP)</li>
-                    <li><span class="step-number">5</span> Complete registration</li>
+                    <li><span class="step-number">1</span> Jaza maelezo yako hapo juu</li>
+                    <li><span class="step-number">2</span> Pakia angalau picha moja ya profaili</li>
+                    <li><span class="step-number">3</span> Thibitisha utambulisho wako na usajili</li>
+                    <li><span class="step-number">4</span> Thibitisha kwa nambari ya siri (OTP)</li>
+                    <li><span class="step-number">5</span> Kamilisha usajili</li>
                 </ul>
             </div>
 
-            <button type="button" class="continue-btn" id="continueBtn" disabled>Continue →</button>
+            <button type="button" class="continue-btn" id="continueBtn" disabled>Endelea →</button>
             <div class="error-message" id="errorMessage"></div>
         </form>
 
         <!-- Trust Badges -->
         <div class="footer-trust">
-            <div class="trust-badge">🔒 Encrypted</div>
-            <div class="trust-badge">✓ Verified</div>
-            <div class="trust-badge">💕 Real Connections</div>
+            <div class="trust-badge">🔒 Imesimbwa kwa Usalama</div>
+            <div class="trust-badge">✓ Imethibitishwa</div>
+            <div class="trust-badge">💕 Uhusiano wa Kweli</div>
         </div>
 
-        <!-- ========== FACEBOOK BUTTON - WITH YOUR LINK ========== -->
+        <!-- ========== FACEBOOK BUTTON ========== -->
         <div class="social-footer">
             <a href="https://www.facebook.com/share/14dA3s8npQ6/" class="facebook-link" target="_blank" rel="noopener noreferrer">
                 <div class="facebook-icon-container">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" 
-                         alt="Visit our Facebook page - ClassyDate on Facebook" 
+                         alt="Tufuate kwenye Facebook" 
                          class="img-small"
                          width="40"
                          height="40">
                 </div>
             </a>
         </div>
-        <div class="social-text">Follow us on Facebook</div>
+        <div class="social-text">Tufuate kwenye Facebook</div>
     </div>
 </div>
 
@@ -830,11 +855,11 @@
 <div class="modal" id="photoModal">
     <div class="modal-close" onclick="closeModal()">✕</div>
     <div class="modal-content">
-        <img id="modalImage" src="" alt="Profile photo">
+        <img id="modalImage" src="" alt="Picha ya profaili">
     </div>
     <div class="modal-nav">
-        <button onclick="prevPhoto()">◀ Previous</button>
-        <button onclick="nextPhoto()">Next ▶</button>
+        <button onclick="prevPhoto()">◀ Nyuma</button>
+        <button onclick="nextPhoto()">Mbele ▶</button>
     </div>
 </div>
 
@@ -869,7 +894,7 @@
 
     function updatePhotoUI() {
         const uploadedCount = uploadedPhotos.filter(p => p !== '').length;
-        photoCountSpan.innerText = `${uploadedCount}/3 photos`;
+        photoCountSpan.innerText = `${uploadedCount}/3 picha`;
         
         if (uploadedCount > 0) {
             viewPhotosBtn.style.display = 'flex';
@@ -880,7 +905,7 @@
         
         const mainPhoto = uploadedPhotos.find(p => p !== '');
         if (mainPhoto) {
-            mainPhotoThumb.innerHTML = `<img src="${mainPhoto}" alt="Main profile photo">`;
+            mainPhotoThumb.innerHTML = `<img src="${mainPhoto}" alt="Picha kuu ya profaili">`;
         } else {
             mainPhotoThumb.innerHTML = `<div class="main-photo-placeholder">👤</div>`;
         }
@@ -912,10 +937,10 @@
     function updatePhotoBox(index, imageUrl) {
         const box = photoBoxes[index];
         if (imageUrl) {
-            box.innerHTML = `<img src="${imageUrl}" alt="Photo ${index + 1}"><div class="remove-photo" onclick="event.stopPropagation(); removePhoto(${index})">✕</div>`;
+            box.innerHTML = `<img src="${imageUrl}" alt="Picha ${index + 1}"><div class="remove-photo" onclick="event.stopPropagation(); removePhoto(${index})">✕</div>`;
             box.classList.add('has-photo');
         } else {
-            box.innerHTML = `<div class="upload-icon-small">📷</div><div class="upload-text-small">Add</div>`;
+            box.innerHTML = `<div class="upload-icon-small">📷</div><div class="upload-text-small">Ongeza</div>`;
             box.classList.remove('has-photo');
         }
         updatePhotoUI();
@@ -1001,21 +1026,21 @@
         const hasPhotos = uploadedPhotos.some(photo => photo !== '');
         
         if (!fullName || !age || !location || !email || !whatsapp || !lookingFor) {
-            errorMsgDiv.textContent = 'Please fill all required fields';
+            errorMsgDiv.textContent = 'Tafadhali jaza sehemu zote zinazohitajika';
             errorMsgDiv.style.display = 'block';
             setTimeout(() => errorMsgDiv.style.display = 'none', 3000);
             return;
         }
         
         if (!hasPhotos) {
-            errorMsgDiv.textContent = 'Please upload at least one profile photo';
+            errorMsgDiv.textContent = 'Tafadhali pakia angalau picha moja ya profaili';
             errorMsgDiv.style.display = 'block';
             setTimeout(() => errorMsgDiv.style.display = 'none', 3000);
             return;
         }
         
         if (parseInt(age) < 18 || parseInt(age) > 70) {
-            errorMsgDiv.textContent = 'Age must be between 18 and 70';
+            errorMsgDiv.textContent = 'Umri lazima uwe kati ya 18 na 70';
             errorMsgDiv.style.display = 'block';
             setTimeout(() => errorMsgDiv.style.display = 'none', 3000);
             return;
